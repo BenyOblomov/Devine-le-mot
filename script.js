@@ -12,24 +12,29 @@ function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-mots = ["AS", "FROMAGE", "BALLON", "VENIR"]
+mots = ["ANE", "FROMAGE", "BALLON", "VENIR", "EFFICACE", "BEL", "MENU", "MYSTERE"];
 
-mot_mystere = mots[randomNumber(0, 4)]
+mot_mystere = mots[randomNumber(0, mots.length)];
 
 
-indice1 = "La première lettre du mot est " + mot_mystere.charAt(0)
-indice2 = "Le mot est composé de " + mot_mystere.length + " lettres."
-indice3 = "La derniere lettre du mot est " + mot_mystere.charAt(mot_mystere.length-1)
+indice1 = "La première lettre du mot est " + mot_mystere.charAt(0);
+indice2 = "Le mot est composé de " + mot_mystere.length + " lettres.";
+indice3 = "La dernière lettre du mot est " + mot_mystere.charAt(mot_mystere.length-1);
+indice4 = "La deuxième lettre du mot est " + mot_mystere.charAt(1);
+indice5 = "La troisième lettre du mot est " + mot_mystere.charAt(2);
 
-indices = [indice1, indice2, indice3]
-
-guess = ""
+indices = [indice1, indice2, indice3, indice4, indice5];
+i = -1;
+guess = "";
 while (guess.toUpperCase() != mot_mystere){
-    guess = (prompt("Devine le mot mystère !"))
+    i = i + 1;
+    if (i == indices.length) {
+        i = 0;
+    }
+    guess = (prompt("Devine le mot mystère !"));
     if (guess.toUpperCase() == mot_mystere) {
-        alert("Bravo ! Vous avez trouvé le mot mystère")
+        alert("Bravo ! Vous avez trouvé le mot mystère");
     } else {
-        indice = indices[randomNumber(0, 3)]
-        alert("Dommage ! Voici un indice : " + indice)
+        alert("Dommage ! Voici un indice : " + indices[i])
     }
 }
